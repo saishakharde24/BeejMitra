@@ -4,6 +4,7 @@ import { useState } from "react";
 import "./App.css";
 import SeedCard from "./components/SeedCard";
 import seeds from "./seeds";
+import CropRecommendation from "./components/CropRecommendation";
 
 function App() {
     const [selectedSeed, setSelectedSeed] = useState(null);
@@ -249,6 +250,8 @@ const [seasonFilter, setSeasonFilter] = useState("All");
 </div>
 
 </section>
+
+<CropRecommendation />
 
         {/* About Section */}
         <section className="about-section" id="about">

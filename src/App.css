@@ -784,3 +784,68 @@ a {
     padding: 25px 20px;
   }
 }
+
+/* Seed Search */
+
+.seed-search {
+  max-width: 600px;
+  margin: 0 auto 35px;
+}
+
+.seed-search label {
+  display: block;
+  margin-bottom: 10px;
+  color: #304b36;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.seed-search input {
+  width: 100%;
+  min-height: 50px;
+  padding: 13px 16px;
+  color: #203326;
+  background: #ffffff;
+  border: 1px solid #dbe5d6;
+  border-radius: 10px;
+  font-size: 15px;
+  outline-offset: 3px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.seed-search input:focus {
+  border-color: #47864b;
+  box-shadow: 0 0 0 3px rgb(71 134 75 / 12%);
+}
+
+.seed-search input::placeholder {
+  color: #929d92;
+}
+
+.search-count {
+  margin: 10px 0 0;
+  color: #778477;
+  font-size: 12px;
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  padding: 45px 20px;
+  text-align: center;
+  background: #f5f8f1;
+  border-radius: 12px;
+}
+
+.no-results > span {
+  font-size: 35px;
+}
+
+.no-results h3 {
+  margin-bottom: 8px;
+  color: #304b36;
+}
+
+.no-results p {
+  color: #718071;
+  font-size: 14px;
+}

@@ -7,6 +7,18 @@ import seeds from "./seeds";
 
 function App() {
     const [selectedSeed, setSelectedSeed] = useState(null);
+    const [search, setSearch] = useState("");
+
+    const filteredSeeds = seeds.filter((seed) => {
+  const searchText = search.trim().toLowerCase();
+
+  return (
+    seed.name.toLowerCase().includes(searchText) ||
+    seed.hindi.includes(search.trim()) ||
+    seed.category.toLowerCase().includes(searchText)
+  );
+});
+
   return (
     <div className="app">
       {/* Navigation Bar */}
@@ -153,15 +165,43 @@ function App() {
     </p>
   </div>
 
+  <div className="seed-search">
+  <label htmlFor="seed-search-input">
+    Search for a seed
+  </label>
+
+  <input
+    id="seed-search-input"
+    type="search"
+    placeholder="Try Wheat, Rice, Moong..."
+    value={search}
+    onChange={(event) => setSearch(event.target.value)}
+  />
+
+  <p className="search-count" aria-live="polite">
+    {filteredSeeds.length} seed
+    {filteredSeeds.length !== 1 ? "s" : ""} found
+  </p>
+</div>
+
   <div className="seed-grid">
-    {seeds.map((seed) => (
+  {filteredSeeds.length > 0 ? (
+    filteredSeeds.map((seed) => (
       <SeedCard
         key={seed.id}
         seed={seed}
         onViewDetails={setSelectedSeed}
       />
-    ))}
-  </div>
+    ))
+  ) : (
+    <div className="no-results">
+      <span>🔎</span>
+      <h3>No seeds found</h3>
+      <p>Try another seed name or category.</p>
+    </div>
+  )}
+</div>
+
 </section>
 
         {/* About Section */}

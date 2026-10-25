@@ -8,15 +8,22 @@ import seeds from "./seeds";
 function App() {
     const [selectedSeed, setSelectedSeed] = useState(null);
     const [search, setSearch] = useState("");
+    const [categoryFilter, setCategoryFilter] = useState("All");
+const [seasonFilter, setSeasonFilter] = useState("All");
 
     const filteredSeeds = seeds.filter((seed) => {
-  const searchText = search.trim().toLowerCase();
+  const matchesSearch =
+    seed.name.toLowerCase().includes(search.toLowerCase()) ||
+    seed.hindiName.includes(search) ||
+    seed.category.toLowerCase().includes(search.toLowerCase());
 
-  return (
-    seed.name.toLowerCase().includes(searchText) ||
-    seed.hindi.includes(search.trim()) ||
-    seed.category.toLowerCase().includes(searchText)
-  );
+  const matchesCategory =
+    categoryFilter === "All" || seed.category === categoryFilter;
+
+  const matchesSeason =
+    seasonFilter === "All" || seed.season === seasonFilter;
+
+  return matchesSearch && matchesCategory && matchesSeason;
 });
 
   return (
@@ -177,6 +184,45 @@ function App() {
     value={search}
     onChange={(event) => setSearch(event.target.value)}
   />
+  <div className="filter-controls">
+  <label>
+    Category:
+    <select
+      value={categoryFilter}
+      onChange={(e) => setCategoryFilter(e.target.value)}
+    >
+      <option value="All">All Categories</option>
+      <option value="Cereals">Cereals</option>
+      <option value="Pulses">Pulses</option>
+      <option value="Millets">Millets</option>
+    </select>
+  </label>
+
+  <label>
+    Season:
+    <select
+      value={seasonFilter}
+      onChange={(e) => setSeasonFilter(e.target.value)}
+    >
+      <option value="All">All Seasons</option>
+      <option value="Kharif">Kharif</option>
+      <option value="Rabi">Rabi</option>
+      <option value="Zaid">Zaid</option>
+    </select>
+  </label>
+
+  <button
+    type="button"
+    onClick={() => {
+      setSearch("");
+      setCategoryFilter("All");
+      setSeasonFilter("All");
+    }}
+  >
+    Reset Filters
+  </button>
+</div>
+
 
   <p className="search-count" aria-live="polite">
     {filteredSeeds.length} seed

@@ -849,3 +849,56 @@ a {
   color: #718071;
   font-size: 14px;
 }
+
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: end;
+  gap: 16px;
+  margin: 20px auto 30px;
+}
+
+.filter-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 600;
+  color: #24452b;
+}
+
+.filter-controls select {
+  min-width: 160px;
+  padding: 11px 14px;
+  border: 1px solid #cbd8c9;
+  border-radius: 8px;
+  background: #fff;
+  font: inherit;
+}
+
+.filter-controls button {
+  padding: 11px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #286b3b;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}
+
+.filter-controls button:hover {
+  background: #1e512d;
+}
+
+@media (max-width: 600px) {
+  .filter-controls {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 16px;
+  }
+
+  .filter-controls select,
+  .filter-controls button {
+    width: 100%;
+  }
+}

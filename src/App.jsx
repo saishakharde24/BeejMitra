@@ -1,6 +1,12 @@
 import "./App.css";
 
+import { useState } from "react";
+import "./App.css";
+import SeedCard from "./components/SeedCard";
+import seeds from "./seeds";
+
 function App() {
+    const [selectedSeed, setSelectedSeed] = useState(null);
   return (
     <div className="app">
       {/* Navigation Bar */}
@@ -134,6 +140,30 @@ function App() {
           </div>
         </section>
 
+        {/* Seed Catalog Section */}
+<section className="seed-catalog section-container" id="catalog">
+  <div className="section-heading">
+    <span className="eyebrow">EXPLORE OUR COLLECTION</span>
+
+    <h2>Discover Seed Varieties</h2>
+
+    <p>
+      Explore different crops and learn about their
+      characteristics.
+    </p>
+  </div>
+
+  <div className="seed-grid">
+    {seeds.map((seed) => (
+      <SeedCard
+        key={seed.id}
+        seed={seed}
+        onViewDetails={setSelectedSeed}
+      />
+    ))}
+  </div>
+</section>
+
         {/* About Section */}
         <section className="about-section" id="about">
           <div className="about-content">
@@ -171,6 +201,8 @@ function App() {
             </div>
           </div>
         </section>
+
+
       </main>
 
       {/* Footer */}
@@ -186,6 +218,69 @@ function App() {
           © {new Date().getFullYear()} BeejMitra. All rights reserved.
         </p>
       </footer>
+            {selectedSeed && (
+        <div
+          className="modal-backdrop"
+          onClick={() => setSelectedSeed(null)}
+        >
+          <section
+            className="seed-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="seed-modal-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              className="modal-close"
+              onClick={() => setSelectedSeed(null)}
+              aria-label="Close seed details"
+            >
+              ×
+            </button>
+
+            <div className="modal-seed-icon">
+              {selectedSeed.icon}
+            </div>
+
+            <span className="seed-category">
+              {selectedSeed.category}
+            </span>
+
+            <h2 id="seed-modal-title">
+              {selectedSeed.name}
+            </h2>
+
+            <p className="seed-hindi">
+              {selectedSeed.hindi}
+            </p>
+
+            <p>{selectedSeed.description}</p>
+
+            <div className="modal-info">
+              <p>
+                <strong>Growing season:</strong>{" "}
+                {selectedSeed.season}
+              </p>
+
+              <p>
+                <strong>Water needs:</strong>{" "}
+                {selectedSeed.water}
+              </p>
+
+              <p>
+                <strong>Soil information:</strong>{" "}
+                {selectedSeed.soil}
+              </p>
+            </div>
+
+            <p className="data-note">
+              General educational information only.
+              Confirm local cultivation requirements with
+              a qualified agricultural adviser.
+            </p>
+          </section>
+        </div>
+      )}
     </div>
   );
 }

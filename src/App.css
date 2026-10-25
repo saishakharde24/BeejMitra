@@ -985,3 +985,106 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+.crop-information {
+  padding: 70px 6%;
+  background: #ffffff;
+}
+
+.crop-information .section-heading {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto 30px;
+}
+
+.crop-information .section-heading h2 {
+  color: #245b32;
+  margin-bottom: 12px;
+}
+
+.crop-search {
+  max-width: 500px;
+  margin: 0 auto 35px;
+}
+
+.crop-search input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #cbd8c9;
+  border-radius: 10px;
+  font: inherit;
+}
+
+.crop-search input:focus {
+  outline: 2px solid #43804b;
+  outline-offset: 2px;
+}
+
+.crop-information-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.crop-information-card {
+  padding: 24px;
+  border: 1px solid #e0e9dc;
+  border-radius: 14px;
+  background: #fbfdf9;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.crop-information-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.crop-information-icon {
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+
+.crop-information-card h3 {
+  color: #245b32;
+  margin-bottom: 4px;
+}
+
+.crop-hindi-name {
+  color: #43804b;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.crop-information-details {
+  border-top: 1px solid #e0e9dc;
+  margin-top: 16px;
+  padding-top: 12px;
+}
+
+.crop-information-details p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.crop-no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 30px;
+}
+
+@media (max-width: 900px) {
+  .crop-information-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .crop-information {
+    padding: 50px 5%;
+  }
+
+  .crop-information-grid {
+    grid-template-columns: 1fr;
+  }
+}

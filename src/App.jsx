@@ -5,6 +5,7 @@ import "./App.css";
 import SeedCard from "./components/SeedCard";
 import seeds from "./seeds";
 import CropRecommendation from "./components/CropRecommendation";
+import CropInformation from "./components/CropInformation";
 
 function App() {
     const [selectedSeed, setSelectedSeed] = useState(null);
@@ -252,6 +253,9 @@ const [seasonFilter, setSeasonFilter] = useState("All");
 </section>
 
 <CropRecommendation />
+
+
+<CropInformation />
 
         {/* About Section */}
         <section className="about-section" id="about">
